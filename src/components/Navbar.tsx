@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Heart, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
 import { categories } from "@/lib/data";
@@ -161,10 +162,13 @@ export default function Navbar() {
                     </div>
                   ))}
                   <div className="relative rounded-2xl overflow-hidden h-48">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80"
                       alt="Istaknuto"
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="300px"
+                      className="object-cover"
+                      quality={75}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#183B2D]/70 to-transparent flex flex-col justify-end p-5">
                       <p className="text-white font-medium" style={{ fontFamily: "var(--font-heading)", fontSize: "1.3rem" }}>Nova sezona</p>

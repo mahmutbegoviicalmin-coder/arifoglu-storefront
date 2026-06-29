@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SlidersHorizontal, X, ChevronDown } from "lucide-react";
@@ -53,7 +54,7 @@ export default function StraniceKolekcije() {
           style={{ background: "var(--color-primary)" }}
         >
           {kategorija?.image && (
-            <img src={kategorija.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+            <Image src={kategorija.image} alt="" fill sizes="100vw" className="object-cover opacity-15" quality={70} />
           )}
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center text-white">
             <p className="text-[#D8E8B8] text-xs uppercase tracking-widest mb-3 font-medium">Kolekcija</p>

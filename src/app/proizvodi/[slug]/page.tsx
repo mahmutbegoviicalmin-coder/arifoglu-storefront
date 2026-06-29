@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShoppingBag, Heart, Star, ChevronDown, Check, Minus, Plus, ArrowLeft, Truck, RotateCcw, ShieldCheck } from "lucide-react";
 import { useState } from "react";
@@ -51,16 +52,20 @@ export default function StraniceProizvoda() {
             {/* Galerija */}
             <div className="flex flex-col gap-4">
               <motion.div
-                className="rounded-3xl overflow-hidden bg-white shadow-sm"
+                className="rounded-3xl overflow-hidden bg-white shadow-sm relative"
                 style={{ aspectRatio: "1 / 1" }}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <img
+                <Image
                   src={proizvod.slike[aktivnaSlika]}
                   alt={proizvod.naziv}
-                  className="w-full h-full object-contain p-8"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain p-8"
+                  priority
+                  quality={90}
                 />
               </motion.div>
               {proizvod.slike.length > 1 && (
@@ -69,11 +74,11 @@ export default function StraniceProizvoda() {
                     <button
                       key={i}
                       onClick={() => setAktivnaSlika(i)}
-                      className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all bg-white ${
+                      className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all bg-white relative ${
                         aktivnaSlika === i ? "border-[#183B2D] shadow-sm" : "border-transparent"
                       }`}
                     >
-                      <img src={slika} alt="" className="w-full h-full object-contain p-2" />
+                      <Image src={slika} alt="" fill sizes="80px" className="object-contain p-2" quality={70} />
                     </button>
                   ))}
                 </div>

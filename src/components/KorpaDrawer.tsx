@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, Trash2, ShoppingBag, Truck, Check } from "lucide-react";
 import { useState } from "react";
@@ -88,8 +89,8 @@ export default function KorpaDrawer() {
                 <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
                   {stavke.map((s) => (
                     <div key={s.id} className="flex gap-4 items-start">
-                      <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#F8F7F4] flex-shrink-0">
-                        <img src={s.slika} alt={s.naziv} className="w-full h-full object-cover" />
+                      <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#F8F7F4] flex-shrink-0 relative">
+                        <Image src={s.slika} alt={s.naziv} fill sizes="80px" className="object-cover" quality={70} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-[#1D1D1D] leading-snug line-clamp-2">{s.naziv}</p>

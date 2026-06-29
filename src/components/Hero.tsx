@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -49,23 +50,53 @@ export default function Hero() {
         <motion.div
           key={`lijevo-${trenutni}`}
           className="w-1/2 h-full relative overflow-hidden"
-          initial={{ scale: 1.08 }}
+          initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{ willChange: "transform" }}
         >
-          <img src={slajd.slikaLijevo} alt="" className="w-full h-full object-cover" />
+          <Image
+            src={slajd.slikaLijevo}
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-cover"
+            priority={true}
+            quality={90}
+          />
           <div className="absolute inset-0 bg-[#183B2D]/40" />
         </motion.div>
         <motion.div
           key={`desno-${trenutni}`}
           className="w-1/2 h-full relative overflow-hidden"
-          initial={{ scale: 1.08 }}
+          initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
+          style={{ willChange: "transform" }}
         >
-          <img src={slajd.slikaDesno} alt="" className="w-full h-full object-cover" />
+          <Image
+            src={slajd.slikaDesno}
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-cover"
+            priority={true}
+            quality={90}
+          />
           <div className="absolute inset-0 bg-[#183B2D]/20" />
         </motion.div>
+      </div>
+
+      {/* Preload next slide images */}
+      <div className="hidden">
+        {slajdovi.map((s, i) =>
+          i !== trenutni ? (
+            <span key={i}>
+              <Image src={s.slikaLijevo} alt="" fill sizes="50vw" quality={90} />
+              <Image src={s.slikaDesno} alt="" fill sizes="50vw" quality={90} />
+            </span>
+          ) : null
+        )}
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center">
@@ -74,7 +105,7 @@ export default function Hero() {
             key={`tag-${trenutni}`}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="text-xs uppercase tracking-[0.3em] text-[#D8E8B8] mb-6 font-medium"
           >
             {slajd.tag}
@@ -84,7 +115,7 @@ export default function Hero() {
             key={`h1-${trenutni}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.1] mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
@@ -97,7 +128,7 @@ export default function Hero() {
             key={`pod-${trenutni}`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
             className="text-white/75 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed"
           >
             {slajd.podnaslov}
@@ -107,7 +138,7 @@ export default function Hero() {
             key={`dugmad-${trenutni}`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.6 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a

@@ -4,7 +4,7 @@ export const categories = [
     name: "Biljni čajevi",
     slug: "bitki-cajevi",
     opis: "Umirujući, ljekoviti čajevi za svaki trenutak",
-    image: "/hero/biljni caj.png",
+    image: "/hero/biljnicaj.png",
     potkategorije: ["Opuštanje", "Probava", "Imunitet", "Ljepota", "Energija"],
   },
   {

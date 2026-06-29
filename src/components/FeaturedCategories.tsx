@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { categories } from "@/lib/data";
@@ -35,22 +36,29 @@ export default function IstaknuteKategorije() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.55, delay: i * 0.07, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
             className={`group relative rounded-2xl overflow-hidden cursor-pointer ${
               i === 0 ? "md:col-span-2 md:row-span-2" : ""
             }`}
             style={{
               aspectRatio: i === 0 ? "auto" : "4/3",
               minHeight: i === 0 ? 420 : undefined,
+              willChange: "transform",
             }}
             whileHover={{ y: -3 }}
           >
             <div className="w-full h-full relative" style={{ minHeight: i === 0 ? 420 : 200 }}>
-              <img
+              <Image
                 src={kat.image}
                 alt={kat.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ position: "absolute", inset: 0 }}
+                fill
+                sizes={i === 0
+                  ? "(max-width: 768px) 100vw, 66vw"
+                  : "(max-width: 768px) 50vw, 33vw"
+                }
+                className="object-cover transition-transform duration-600 group-hover:scale-105"
+                style={{ willChange: "transform" }}
+                quality={85}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#183B2D]/70 via-[#183B2D]/10 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
 

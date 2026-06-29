@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
@@ -12,10 +13,13 @@ export default function IstaknutiBaner() {
   return (
     <section ref={ref} className="relative overflow-hidden h-[70vh] min-h-[480px] my-12 mx-4 lg:mx-12 rounded-3xl">
       <motion.div className="absolute inset-0" style={{ y }}>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1556909211-36987daf7b4d?w=1600&q=85"
           alt="Priroda i wellness"
-          className="w-full h-[120%] object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          quality={85}
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#183B2D]/80 via-[#183B2D]/50 to-transparent" />

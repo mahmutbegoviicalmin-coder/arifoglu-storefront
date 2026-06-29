@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, ShoppingBag, Star } from "lucide-react";
 import { useState } from "react";
@@ -28,7 +29,7 @@ const oznakaBoja: Record<string, { bg: string; tekst: string }> = {
   "Organsko":       { bg: "#D8E8B8", tekst: "#183B2D" },
 };
 
-export default function ProizvodKartica({ proizvod }: { proizvod: Proizvod }) {
+export default function ProizvodKartica({ proizvod, priority = false }: { proizvod: Proizvod; priority?: boolean }) {
   const { dodaj } = useKorpa();
   const [zelja, setZelja] = useState(false);
   const [dodano, setDodano] = useState(false);
@@ -49,14 +50,20 @@ export default function ProizvodKartica({ proizvod }: { proizvod: Proizvod }) {
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+      style={{ willChange: "transform" }}
     >
       <a href={`/proizvodi/${proizvod.slug}`} className="block relative overflow-hidden" style={{ aspectRatio: "1 / 1" }}>
-        <img
+        <Image
           src={proizvod.slika}
           alt={proizvod.naziv}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ willChange: "transform" }}
+          priority={priority}
+          quality={85}
         />
 
         {/* Oznake */}

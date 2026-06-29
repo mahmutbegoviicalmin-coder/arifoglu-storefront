@@ -84,7 +84,7 @@ export default function NajprodavanijiProizvodi() {
               className="flex-shrink-0 snap-start"
               style={{ width: "clamp(220px, 260px, 280px)" }}
             >
-              <ProizvodKartica proizvod={p} />
+              <ProizvodKartica proizvod={p} priority={i < 4} />
             </motion.div>
           ))}
         </div>

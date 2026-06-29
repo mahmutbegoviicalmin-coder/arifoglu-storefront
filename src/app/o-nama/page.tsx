@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Podnozje from "@/components/Footer";
 
@@ -37,8 +38,8 @@ export default function ONamaStrana() {
                 Danas naše proizvode dostavljamo i u Bosnu i Hercegovinu — jer zdravlje je univerzalno, a priroda ne poznaje granice.
               </p>
             </div>
-            <div className="rounded-3xl overflow-hidden aspect-square">
-              <img src="/hero/ljekovitobilje.png" alt="Arifoğlu tradicija" className="w-full h-full object-cover" />
+            <div className="rounded-3xl overflow-hidden aspect-square relative">
+              <Image src="/hero/ljekovitobilje.png" alt="Arifoğlu tradicija" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" quality={85} />
             </div>
           </div>
 

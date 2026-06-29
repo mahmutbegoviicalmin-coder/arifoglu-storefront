@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { categories } from "@/lib/data";
 
@@ -34,20 +35,23 @@ export default function Kolekcije() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.5 }}
+                transition={{ delay: i * 0.06, duration: 0.45 }}
                 whileHover={{ y: -5 }}
                 className="group flex-shrink-0 snap-start flex flex-col items-center gap-3 cursor-pointer"
-                style={{ width: 130 }}
+                style={{ width: 130, willChange: "transform" }}
               >
                 <div
                   className="w-24 h-24 rounded-2xl overflow-hidden relative transition-shadow duration-300 group-hover:shadow-lg"
                   style={{ background: kol.boja }}
                 >
                   {podaci?.image && (
-                    <img
+                    <Image
                       src={podaci.image}
                       alt={kol.naziv}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      fill
+                      sizes="96px"
+                      className="object-cover transition-transform duration-400 group-hover:scale-110"
+                      quality={80}
                     />
                   )}
                 </div>
