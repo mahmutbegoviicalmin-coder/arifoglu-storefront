@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/collections", destination: "/kolekcije", permanent: true },
       { source: "/collections/:slug", destination: "/kolekcije/:slug", permanent: true },
-      { source: "/products/:slug", destination: "/proizvodi/:slug", permanent: true },
+      { source: "/products/:slug((?!.*\\.[a-z]{2,4}$).*)", destination: "/proizvodi/:slug", permanent: true },
       { source: "/shop", destination: "/prodavnica", permanent: true },
     ];
   },
